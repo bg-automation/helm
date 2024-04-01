@@ -56,7 +56,7 @@ spec:
       volumes:
         - name: html
           configMap:
-            name: openresty-html
+            name: {{ include "openresty-art.fullname" . }}-html
         - name: config
           configMap:
-            name: openresty-conf
+            name: {{ include "openresty-art.fullname" . }}-conf

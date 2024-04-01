@@ -1,15 +1,13 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: {{ include "openresty-art.fullname" . }}
+  name: {{ include "openresty-art.fullname" . }}-srv
   labels:
     {{- include "openresty-art.labels" . | nindent 4 }}
+
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+    - port: 80
+      targetPort: 80
   selector:
-    {{- include "openresty-art.selectorLabels" . | nindent 4 }}
+    k8s-app: openresty
